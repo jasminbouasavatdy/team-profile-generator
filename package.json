@@ -1,6 +1,29 @@
 {
   "dependencies": {
-    "inquirer": "^8.2.1",
+    "inquirer": "^8.2.1"
+  },
+  "name": "team-profile-generator",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
     "jest": "^27.5.1"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasminbouasavatdy/team-profile-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasminbouasavatdy/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/jasminbouasavatdy/team-profile-generator#readme"
 }
