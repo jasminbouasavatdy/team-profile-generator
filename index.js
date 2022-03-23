@@ -42,7 +42,6 @@ const addEmployee = () => {
 const ifChosen = (employee) => {
     if (employee.employeeType === 'Engineer') {
         engineerPrompt()
-            .then(addEmployee)
             .then((answers) => {
                 init(answers.employeeType);
                 // console.log('henlo am here')
@@ -50,7 +49,6 @@ const ifChosen = (employee) => {
 
     } if (employee.employeeType === 'Intern') {
         internPrompt()
-            .then(addEmployee)
             .then((answers) => {
                 init(answers.employeeType);
             });
@@ -110,7 +108,12 @@ const internPrompt = () => {
         },
     ])
 }
+// fs.writeFile('../dist/index.html', template, (err) => {err? console.error(err): console.log(answers)
+// });
 
+// function toHTML(type){
+    
+// }
 
 const init = (type) => {
     if (type === 'manager') {

@@ -10,10 +10,10 @@ describe('Intern', () => {
     });
     
     describe('getSchool', () => {
-        it('should return the email', () => {
+        it('should return the school', () => {
             const intern = new Intern('Billy', 2, 'billyk@hotmail.com', 'UNCC');
 
-            expect(intern.getRole()).toBe('UNCC');
+            expect(intern.getSchool()).toBe('UNCC');
         });
     });
 });
