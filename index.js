@@ -1,23 +1,28 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
-const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
+const generateHTML = require('./src/generateHTML');
+
+let team = [];
 const managerPrompt = () => {
     return inquirer.prompt([
         {
             type: 'input',
             message: 'Who is the team manager?',
-            name: 'managerName',
+            name: 'name',
         },
         {
             type: 'input',
             message: 'What is the team mangers employee ID?',
-            name: 'managerId',
+            name: 'id',
         },
         {
             type: 'input',
             message: 'What is the team mangers email?',
-            name: 'managerEmail',
+            name: 'email',
         },
         {
             type: 'input',
@@ -44,7 +49,6 @@ const ifChosen = (employee) => {
         engineerPrompt()
             .then((answers) => {
                 init(answers.employeeType);
-                // console.log('henlo am here')
             });
 
     } if (employee.employeeType === 'Intern') {
@@ -54,8 +58,11 @@ const ifChosen = (employee) => {
             });
 
     } if (employee.employeeType === 'Finished') {
-        process.exit();
-    }
+        fs.writeFile('./dist/index.html', generateHTML(team),function(){
+            console.log(team)
+    })
+    return
+}
 
 
 }
@@ -65,17 +72,17 @@ const engineerPrompt = () => {
         {
             type: 'input',
             message: 'What is the name of the engineer?',
-            name: 'engineerName',
+            name: 'name',
         },
         {
             type: 'input',
             message: 'What is the engineer\s id?',
-            name: 'engineerId',
+            name: 'id',
         },
         {
             type: 'input',
             message: 'What is the engineer\s email?',
-            name: 'engineerEmail',
+            name: 'email',
         },
         {
             type: 'input',
@@ -89,17 +96,17 @@ const internPrompt = () => {
         {
             type: 'input',
             message: 'What is the name of the intern?',
-            name: 'internName',
+            name: 'name',
         },
         {
             type: 'input',
             message: 'What is the intern\s id?',
-            name: 'internId',
+            name: 'id',
         },
         {
             type: 'input',
             message: 'What is the intern\s email?',
-            name: 'internEmail',
+            name: 'email',
         },
         {
             type: 'input',
@@ -108,12 +115,26 @@ const internPrompt = () => {
         },
     ])
 }
-// fs.writeFile('../dist/index.html', template, (err) => {err? console.error(err): console.log(answers)
-// });
 
-// function toHTML(type){
-    
-// }
+const managerQuestions = function (){
+    inquirer.prompt(managerPrompt).then(function(answers){
+        var newManager = new Manager(answers.name, answers.id, answers.email, answers.managerOfficeNumber)
+        team.push(newManager)
+    })
+}
+
+const engineerQuestions = function (){
+    inquirer.prompt(engineerPrompt).then(function(answers){
+        var newEngineer = new Engineer(answers.name, answers.id, answers.email, answers.engineerUsername)
+        team.push(newEngineer)
+    })
+}
+const internQuestions = function (){
+    inquirer.prompt(internPrompt).then(function(answers){
+        var newIntern = new Intern(answers.name, answers.id, answers.email, answers.internSchool)
+        team.push(newIntern)
+    })
+}
 
 const init = (type) => {
     if (type === 'manager') {
