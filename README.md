@@ -4,6 +4,8 @@
   1. [Description](#Description)
   1. [Visuals](#Visuals)
   1. [Test](#Test)
+  1. [Deployed](#Deployed)
+
 
 
   
@@ -16,4 +18,10 @@
 
 
   ## Visuals
+![A screenshot of the code/terminal](./images/teamGenerator.png)
+
+
 [Click to watch a walkthrough video of the team generator](https://drive.google.com/file/d/1-JrcGGPtgIbxNnLtoo3leZs6urqkm6-I/view)
+
+## Deployed
+[Click to go to my GitHub repo](https://github.com/jasminbouasavatdy/team-profile-generator)
